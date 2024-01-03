@@ -37648,7 +37648,10 @@ core.debug(`The event payload: ${JSON.stringify(context.payload, undefined, 2)}`
 const gh = new GitHub();
 const owner = context.repo.owner;
 const repo = context.repo.repo;
-const prNumber = context.payload?.pull_request?.number;
+let prNumber = context.payload?.pull_request?.number;
+if ( 'issue_comment' === context.eventName ) {
+  prNumber = context.payload?.issue?.number;
+}
 
 /**
  * Types of contributions collected.
