@@ -37643,6 +37643,8 @@ async function getWPOrgData(githubUsers) {
 
 
 const { context } = github;
+console.log(JSON.stringify(context, undefined, 2));
+core.debug(`The event payload: ${JSON.stringify(context.payload, undefined, 2)}`);
 const gh = new GitHub();
 const owner = context.repo.owner;
 const repo = context.repo.repo;
